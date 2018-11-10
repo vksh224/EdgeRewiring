@@ -61,9 +61,9 @@ public class EdgeRewiringRouter extends ActiveRouter {
 		}
 		
 		// Try first the messages that can be delivered to final recipient
-//		if (exchangeDeliverableMessages() != null) {
-//			return; // started a transfer, don't try others (yet)
-//		}
+		if (exchangeDeliverableMessages() != null) {
+			return; // started a transfer, don't try others (yet)
+		}
 		
 		// then try any/all message to any/all connection
 		this.tryAllMessagesToAllConnections();

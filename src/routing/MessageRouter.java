@@ -207,6 +207,13 @@ public abstract class MessageRouter {
 		return (this.deliveredMessages.containsKey(m.getId()));
 	}
 	
+	protected boolean isValidSink(Message m, DTNHost host){
+		int sHostID = Integer.valueOf(host.toString().substring(1));
+		if (sHostID >= this.sinkHosts[0] && sHostID <= this.sinkHosts[1]){
+			return true;
+		}
+		return false;
+	}
 	protected boolean hasAnySinkReceivedMessage(Message m){
 		List<DTNHost> allHosts = SimScenario.getInstance().getHosts();
 		//System.out.println("Host " + this.host + " msg: " + m.getId());
@@ -364,23 +371,18 @@ public abstract class MessageRouter {
 		// then the message is not considered as 'delivered' to this host.
 		isFinalRecipient = aMessage.getTo() == this.host;
 		
-//		if(this.host.isExemplar() && aMessage.getFrom().getlNeighborhoodId() == this.host){
-//			System.out.println("The message is delivered to exemplar: "+ aMessage.getId()
-//					+" "+this.host+ " even directed to: "+aMessage.getTo() );
-//			isFinalRecipient = true;
-//		}
-		
 		//Multicast implementation
-		int hostID = Integer.parseInt(this.host.toString().substring(1)); 
-		if(hostID >= this.sinkHosts[0] && hostID <= this.sinkHosts[1]){
+		//int hostID = Integer.parseInt(this.host.toString().substring(1)); 
+		if(isValidSink(aMessage, this.host)){
 			isFinalRecipient = true;
-			// System.out.println(" Mes: " + String.valueOf(this.host.toString().substring(1)) + " Hosts: " + this.sinkHosts[0] + " " + this.sinkHosts[1]);
+//			System.out.println(" Mes: " + aMessage.getId() + " " + String.valueOf(this.host.toString().substring(1)) + " Hosts: " + this.sinkHosts[0] + " " + this.sinkHosts[1]);
 		}
 		
 
 		//Multicast
 		isFirstDelivery = isFinalRecipient &&
 				!isDeliveredMessage(aMessage) && !hasAnySinkReceivedMessage(aMessage);
+
 
 		//isFirstDelivery = isFinalRecipient && !isDeliveredMessage(aMessage);
 
@@ -389,8 +391,8 @@ public abstract class MessageRouter {
 			// -> put to buffer
 			addToMessages(aMessage, false);
 		}
-		else if (isFirstDelivery) {
-			// System.out.println(" Message "+ id + " delivered to " + this.host);
+		else if (isFirstDelivery || hasAnySinkReceivedMessage(aMessage)) {
+			//System.out.println(" Message "+ id + " delivered to " + this.host);
 			this.deliveredMessages.put(id, aMessage);
 		}
 		

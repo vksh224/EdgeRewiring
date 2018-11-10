@@ -301,7 +301,8 @@ public abstract class ActiveRouter extends MessageRouter implements ModuleCommun
 		ArrayList<Message> temp = 
 			new ArrayList<Message>(this.getMessageCollection());
 		for (Message m : temp) {
-			if (other == m.getTo()) {
+//			if (other == m.getTo()) {
+			if (isValidSink(m, other) == true) {
 				if (startTransfer(m, con) == RCV_OK) {
 					return true;
 				}
@@ -337,7 +338,8 @@ public abstract class ActiveRouter extends MessageRouter implements ModuleCommun
 		 *  to zero.
 		 */
 		// check if msg was for this host and a response was requested
-		if (m.getTo() == getHost() && m.getResponseSize() > 0) {
+		// if (m.getTo() == getHost() && m.getResponseSize() > 0) {
+		if (isValidSink(m, getHost()) && m.getResponseSize() > 0) {
 			// generate a response message
 			Message res = new Message(this.getHost(),m.getFrom(), 
 					RESPONSE_PREFIX+m.getId(), m.getResponseSize());
@@ -347,6 +349,8 @@ public abstract class ActiveRouter extends MessageRouter implements ModuleCommun
 		
 		return m;
 	}
+	
+	
 	
 	/**
 	 * Returns a list of connections this host currently has with other hosts.
@@ -375,8 +379,10 @@ public abstract class ActiveRouter extends MessageRouter implements ModuleCommun
 		if (retVal == RCV_OK) { // started transfer
 			addToSendingConnections(con);
 		}
+//		else if (deleteDelivered && retVal == DENIED_OLD && 
+//				m.getTo() == con.getOtherNode(this.getHost())) {
 		else if (deleteDelivered && retVal == DENIED_OLD && 
-				m.getTo() == con.getOtherNode(this.getHost())) {
+				isValidSink(m, con.getOtherNode(this.getHost()))) {
 			/* final recipient has already received the msg -> delete it */
 			this.deleteMessage(m.getId(), false);
 		}
@@ -421,7 +427,9 @@ public abstract class ActiveRouter extends MessageRouter implements ModuleCommun
 			return DENIED_OLD; // already seen this message -> reject it
 		}
 		
-		if (m.getTtl() <= 0 && m.getTo() != getHost()) {
+//		if (m.getTtl() <= 0 && m.getTo() != getHost()) {
+		if (m.getTtl() <= 0 && !isValidSink(m, getHost())) {
+			
 			/* TTL has expired and this host is not the final recipient */
 			return DENIED_TTL; 
 		}
