@@ -1,0 +1,12 @@
+600.00 Total Energy consumed:  0.0 300 
+1200.00 Total Energy consumed:  0.0 300 
+1800.10 Total Energy consumed:  0.0 300 
+2400.10 Total Energy consumed:  0.0 300 
+3000.10 Total Energy consumed:  0.0 300 
+3600.10 Total Energy consumed:  0.0 300 
+4200.10 Total Energy consumed:  0.0 300 
+4800.10 Total Energy consumed:  0.0 300 
+5400.00 Total Energy consumed:  0.0 300 
+6000.00 Total Energy consumed:  0.0 300 
+6600.00 Total Energy consumed:  0.0 300 
+7200.00 Total Energy consumed:  0.0 300 

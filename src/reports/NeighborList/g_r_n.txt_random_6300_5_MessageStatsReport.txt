@@ -1,0 +1,20 @@
+Message stats for scenario NeighborList/g_r_n.txt_random_6300_5
+sim_time: 6300.0000
+created: 141
+started: 5255
+relayed: 5255
+aborted: 0
+dropped: 1766
+removed: 0
+delivered: 48
+delivery_prob: 0.3404
+response_prob: 0.0000
+overhead_ratio: 108.4792
+latency_avg: 0.7354
+latency_med: 0.8000
+hopcount_avg: 1.7917
+hopcount_med: 2
+buffertime_avg: 34.7722
+buffertime_med: 36.0000
+rtt_avg: NaN
+rtt_med: NaN

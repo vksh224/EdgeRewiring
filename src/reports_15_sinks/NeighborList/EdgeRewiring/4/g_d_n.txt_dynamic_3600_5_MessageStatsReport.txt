@@ -1,0 +1,20 @@
+Message stats for scenario NeighborList/EdgeRewiring/4/g_d_n.txt_dynamic_3600_5
+sim_time: 3600.1000
+created: 81
+started: 224
+relayed: 224
+aborted: 0
+dropped: 56
+removed: 0
+delivered: 38
+delivery_prob: 0.4691
+response_prob: 0.0000
+overhead_ratio: 4.8947
+latency_avg: 1.9237
+latency_med: 1.8000
+hopcount_avg: 1.0000
+hopcount_med: 1
+buffertime_avg: 34.3964
+buffertime_med: 34.0000
+rtt_avg: NaN
+rtt_med: NaN

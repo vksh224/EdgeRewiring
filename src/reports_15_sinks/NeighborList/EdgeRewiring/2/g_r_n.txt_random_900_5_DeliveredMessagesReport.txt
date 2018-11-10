@@ -1,0 +1,4 @@
+# time  ID  size  hopcount  deliveryTime  fromHost  toHost  remainingTtl  isResponse  path
+Hello 215.2000 M5 74671 3 6.2000 n54 n11 -1 N n54->n112->n86->n11
+Hello 467.6000 M11 62047 2 2.6000 n125 n13 2 N n125->n186->n0
+Hello 798.8000 M18 90222 3 5.8000 n65 n0 0 N n65->n63->n50->n2

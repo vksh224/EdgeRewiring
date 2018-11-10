@@ -1,0 +1,20 @@
+Message stats for scenario NeighborList/EdgeRewiring/2/g_g_n.txt_greedy_6300_8
+sim_time: 6300.0000
+created: 141
+started: 479
+relayed: 479
+aborted: 0
+dropped: 105
+removed: 0
+delivered: 69
+delivery_prob: 0.4894
+response_prob: 0.0000
+overhead_ratio: 5.9420
+latency_avg: 1.7681
+latency_med: 1.7000
+hopcount_avg: 1.0000
+hopcount_med: 1
+buffertime_avg: 34.8676
+buffertime_med: 35.4000
+rtt_avg: NaN
+rtt_med: NaN

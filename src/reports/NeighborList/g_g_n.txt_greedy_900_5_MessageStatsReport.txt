@@ -1,0 +1,20 @@
+Message stats for scenario NeighborList/g_g_n.txt_greedy_900_5
+sim_time: 900.0000
+created: 21
+started: 38
+relayed: 38
+aborted: 0
+dropped: 10
+removed: 0
+delivered: 12
+delivery_prob: 0.5714
+response_prob: 0.0000
+overhead_ratio: 2.1667
+latency_avg: 1.5667
+latency_med: 1.5000
+hopcount_avg: 1.0000
+hopcount_med: 1
+buffertime_avg: 19.3200
+buffertime_med: 16.3000
+rtt_avg: NaN
+rtt_med: NaN
